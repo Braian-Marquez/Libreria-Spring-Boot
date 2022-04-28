@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template.fragments/head::head"></head>
+
+<body>
+<header th:replace="template.fragments/header::header"></header>
+<main>
+    <div class="container">
+        <div class="row ">
+            <div class="col-6">
+                <form th:action="@{/libro/__${action}__}" th:object="${libro}" method="POST">
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class=" mb-3">
+                        <label for="isbn" class="form-label">ISBN:</label>
+                        <input type="text" class="form-control" th:field="*{isbn}" id="isbn"
+                               placeholder="ISBN">
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></div>
+
+                    </div>
+
+                    <div class="  mb-3">
+                        <label for="nombre" class="form-label">Titulo:</label>
+                        <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                               placeholder="Ingresar Titulo"
+                        >
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('nombre')}"
+                             th:errors="*{nombre}"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="anio" class="form-label">Año:</label>
+                        <input type="text" class="form-control" th:field="*{anio}" id="anio"
+                               placeholder="Ingrese el Año"
+                        >
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('anio')}" th:errors="*{anio}"></div>
+                    </div>
+
+                    <div class=" mb-3">
+                        <select th:field="*{autor}" id="autor" class="form-select" aria-label="Select Autor"
+                                required>
+                            <option selected value="">Autor</option>
+                            <option th:each="a : ${autor}" th:text="${a.nombre}"
+                                    th:value="${a.id}"></option>
+                        </select>
+
+                    </div>
+
+                    <div class=" mb-3">
+                        <select th:field="*{editorial}" id="editorial" class="form-select" aria-label="Select Editorial"
+                                required>
+                            <option selected value="">Editorial</option>
+                            <option th:each="e : ${editorial}" th:text="${e.nombre}"
+                                    th:value="${e.id}"></option>
+                        </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="ejemplares" class="form-label">Ejemplares:</label>
+                        <input type="text" class="form-control" th:field="*{ejemplares}" id="ejemplares"
+                               placeholder="Ingrese Ejemplares"
+                        >
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('ejemplares')}"
+                             th:errors="*{ejemplares}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ejemplaresPrestados" class="form-label">Ejemplares Prestados:</label>
+                        <input type="text" class="form-control" th:field="*{ejemplaresPrestados}" id="ejemplaresPrestados"
+                               placeholder="Ingrese Ejemplares Prestados"
+                        >
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('ejemplaresPrestados')}"
+                             th:errors="*{ejemplaresPrestados}"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                            th:text="${action=='create'?'Sign up':'Update'}"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

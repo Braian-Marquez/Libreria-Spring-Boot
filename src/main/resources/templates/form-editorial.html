@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <head th:replace="template.fragments/head::head"></head>
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="template.fragments/header::header"></header>
+<main >
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+                <form th:action="@{/editorial/__${action}__}" th:object="${editorial}" method="POST">
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class=" mb-3">
+                        <label for="nombre" class="form-label">Ingresa la Editorial:</label>
+                        <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                               placeholder="Editorial">
+                        <div class="text-danger mt-b" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+
+                    </div>
+
+
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary"
+                            th:text="${action=='create'?'Sign up':'Update'}"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

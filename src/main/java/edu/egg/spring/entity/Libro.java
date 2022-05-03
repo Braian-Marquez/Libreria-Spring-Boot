@@ -3,8 +3,12 @@ package edu.egg.spring.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+
+import java.time.LocalDate;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -12,7 +16,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "libro", indexes = {@Index(name="idx_libro_isbn",columnList="libro_isbn")})
+@SQLDelete(sql = "UPDATE libro SET libro_deleted = true WHERE libro_id = ?")
+@Where(clause = "libro_deleted=false")
+@Table(name = "libro", indexes = {@Index(name="idx_libro_name",columnList="libro_name")})
 public class Libro {
 
     @Id
@@ -24,11 +30,11 @@ public class Libro {
     @Column(name = "libro_isbn")
     private String isbn;
 
-    @Column(name = "libro_nombre")
+    @Column(name="libro_name")
     private String nombre;
 
-    @Column(name = "libro_anio", columnDefinition = "YEAR")
-    private Integer anio;
+    @Column(name = "libro_anio",  columnDefinition = "DATE", nullable = false)
+    private LocalDate anio;
 
     @Column(name = "libro_ejemplares")
     private Integer ejemplares;
@@ -37,8 +43,9 @@ public class Libro {
 
     private Integer ejemplaresRestantes;
 
-    @Column(name = "libro_alta")
-    private Boolean alta;
+
+    @Column(name = "libro_deleted", nullable = false)
+    private boolean deleted = Boolean.FALSE;;
 
     @ManyToOne
     @JoinColumn(name = "autor_id", referencedColumnName = "autor_id", nullable = false)

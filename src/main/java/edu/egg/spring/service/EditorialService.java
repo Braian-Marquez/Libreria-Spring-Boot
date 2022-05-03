@@ -21,7 +21,7 @@ public class EditorialService {
 
         Editorial editorial=new Editorial();
         editorial.setNombre(editorialDTO.getNombre());
-        editorial.setAlta(editorialDTO.getAlta());
+
 
 
         editorialRepository.save(editorial);

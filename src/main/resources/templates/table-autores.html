@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template.fragments/head::head"></head>
+<head th:replace="fragments/head::head"></head>
 
 <body>
-<header th:replace="template.fragments/header::header"></header>
+<header th:replace="fragments/header::header"></header>
 <main>
 
 
@@ -46,7 +46,7 @@
 
 </main>
 
-
+<footer th:replace="fragments/footer::footer"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html></html>

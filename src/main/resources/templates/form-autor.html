@@ -2,23 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <head th:replace="template.fragments/head::head"></head>
+    <head th:replace="fragments/head::head"></head>
     <title>Title</title>
 </head>
 <body>
-<header th:replace="template.fragments/header::header"></header>
+<header th:replace="fragments/header::header"></header>
 <main >
     <div class="container">
         <div class="row mt-5">
            <div class="col-6">
-               <form th:action="@{/autor/__${action}__}" th:object="${autor}" method="POST">
+               <form th:action="@{/autor/__${action}__}" th:object="${autor}" method="POST" autocomplete="off"
+                     class="needs-validation mb-4" novalidate>
                    <input type="hidden" th:field="*{id}">
 
                    <div class=" mb-3" >
                        <label for="nombre" class="form-label">Ingresa el Autor:</label>
                        <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
-                              placeholder="Jhon Carter">
-                       <div class="text-danger mt-b" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                              placeholder="Jhon Carter" required>
+                       <div class="invalid-feedback text-start">Name is required</div>
 
                    </div>
 
@@ -37,8 +38,8 @@
 </main>
 
 
-
-
+<script th:src="@{/js/validation.js}"></script>
+<footer th:replace="fragments/footer::footer"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

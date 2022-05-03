@@ -15,7 +15,7 @@ public class LibroService {
 
 
     @Autowired
-    LibroRepository libroRepository;
+    private LibroRepository libroRepository;
 
     @Transactional
     public void create(Libro libroDTO)  {
@@ -29,6 +29,7 @@ public class LibroService {
         libro.setEditorial(libroDTO.getEditorial());
         libro.setEjemplares(libroDTO.getEjemplares());
         libro.setEjemplaresPrestados(libroDTO.getEjemplaresPrestados());
+
 
 
         libroRepository.save(libro);

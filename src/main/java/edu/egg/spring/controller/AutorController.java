@@ -21,7 +21,7 @@ public class AutorController {
     private final AutorService autorService;
 
     @GetMapping
-    public ModelAndView getAutor(HttpServletRequest request) {
+    public ModelAndView getAutor(HttpServletRequest request ) {
         ModelAndView mav = new ModelAndView("table-autores");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 

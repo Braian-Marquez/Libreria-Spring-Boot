@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="template.fragments/head::head"></head>
+<head th:replace="fragments/head::head"></head>
 
 <body>
-<header th:replace="template.fragments/header::header"></header>
+<header th:replace="fragments/header::header"></header>
 <main>
 
 
@@ -22,7 +22,7 @@
                                 <th>Autor</th>
                                 <th>Editorial</th>
                                 <th>Ejemplares</th>
-                                <th>Ejemplares Prestados</th>
+                                <th>Ejemplares Restantes</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -35,7 +35,7 @@
                                 <td th:text="${l.autor.nombre}"></td>
                                 <td th:text="${l.editorial.nombre}"></td>
                                 <td th:text="${l.ejemplares}"></td>
-                                <td th:text="${l.ejemplaresPrestados}"></td>
+                                <td th:text="${l.ejemplaresRestantes}"></td>
                                 <td><a class="btn btn-warning" th:href="@{/libro/form-libro/__${l.id}__}">Update</a></td>
                                 <td>
                                     <form  th:action="@{/libro/delete/__${l.id}__}" method="POST">
@@ -57,7 +57,7 @@
 
 </main>
 
-
+<footer th:replace="fragments/footer::footer"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

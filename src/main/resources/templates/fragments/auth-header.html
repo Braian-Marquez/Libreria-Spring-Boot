@@ -1,0 +1,18 @@
+
+<header th:fragment="header" xmlns:th="http://www.thymeleaf.org">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a th:href="@{/}" class="navbar-brand">Home</a>
+
+            <div class="d-flex justify-content-end" id="menu">
+
+
+                <a class="btn btn-light me-2" th:href="@{/auth/login}">Login</a>
+                <a class="btn btn-light" th:href="@{/auth/sign-up}">Sign up</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+

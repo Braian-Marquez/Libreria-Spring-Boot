@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<header th:replace="fragments/header::header"></header>
+<main>
+    <div class="container">
+        <div class="row ">
+            <div class="col-6">
+                <form th:action="@{/prestamo/__${action}__}" th:object="${prestamo}" method="POST" autocomplete="off"
+                      class="needs-validation mb-4" novalidate>
+                    <input type="hidden" th:field="*{id}">
+
+
+
+                    <div class=" mb-3">
+                        <select th:field="*{libro}" id="libro" class="form-select" aria-label="Select Libro"
+                                required>
+                            <option selected value="">Libro</option>
+                            <option th:each="a : ${libro}" th:text="${a.nombre}"
+                                    th:value="${a.id}"></option>
+                        </select>
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary"
+                            th:text="${action=='create'?'Sign up':'Update'}"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script th:src="@{/js/validation.js}"></script>
+<footer th:replace="fragments/footer::footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

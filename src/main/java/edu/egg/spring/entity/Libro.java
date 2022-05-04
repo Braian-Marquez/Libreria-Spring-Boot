@@ -45,7 +45,7 @@ public class Libro {
 
 
     @Column(name = "libro_deleted", nullable = false)
-    private boolean deleted = Boolean.FALSE;;
+    private boolean deleted = Boolean.FALSE;
 
     @ManyToOne
     @JoinColumn(name = "autor_id", referencedColumnName = "autor_id", nullable = false)

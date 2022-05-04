@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <head th:replace="fragments/head::head"></head>
+    <title>Title</title>
+</head>
+<body>
+<header th:replace="fragments/header::header"></header>
+<main >
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-6">
+                <form th:action="@{/cliente/__${action}__}" th:object="${cliente}" method="POST" autocomplete="off"
+                      class="needs-validation mb-4" novalidate>
+                    <input type="hidden" th:field="*{id}">
+
+                    <div class=" mb-3" >
+                        <label for="nombre" class="form-label">Ingresa el Nombre:</label>
+                        <input type="text" class="form-control" th:field="*{nombre}" id="nombre"
+                               placeholder="Jhon " required>
+                        <div class="invalid-feedback text-start">Name is required</div>
+
+                    </div>
+                    <div class=" mb-3" >
+                        <label for="apellido" class="form-label">Ingresa el Apellido:</label>
+                        <input type="text" class="form-control" th:field="*{apellido}" id="apellido"
+                               placeholder="Carter" required>
+                        <div class="invalid-feedback text-start">Apellido is required</div>
+
+                    </div>
+                    <div class=" mb-3" >
+                        <label for="documento" class="form-label">Ingresa el DNI:</label>
+                        <input type="text" class="form-control" th:field="*{documento}" id="documento"
+                               placeholder="4356456" required>
+                        <div class="invalid-feedback text-start">DNI is required</div>
+
+                    </div>
+                    <div class=" mb-3" >
+                        <label for="telefono" class="form-label">Ingresa el Telefono:</label>
+                        <input type="text" class="form-control" th:field="*{telefono}" id="telefono"
+                               placeholder="3764-000000" required>
+                        <div class="invalid-feedback text-start">DNI is required</div>
+
+                    </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary"
+                            th:text="${action=='create'?'Sign up':'Update'}"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script th:src="@{/js/validation.js}"></script>
+<footer th:replace="fragments/footer::footer"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

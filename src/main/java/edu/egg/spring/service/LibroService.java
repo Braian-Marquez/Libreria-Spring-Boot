@@ -2,6 +2,7 @@ package edu.egg.spring.service;
 
 
 import edu.egg.spring.entity.Libro;
+import edu.egg.spring.entity.Prestamo;
 import edu.egg.spring.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,11 @@ public class LibroService {
     private LibroRepository libroRepository;
 
     @Transactional
-    public void create(Libro libroDTO)  {
+    public void create(Libro libroDTO) {
 
 
-        Libro libro=new Libro();
+        Libro libro = new Libro();
+
         libro.setIsbn(libroDTO.getIsbn());
         libro.setNombre(libroDTO.getNombre());
         libro.setAutor(libroDTO.getAutor());

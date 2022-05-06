@@ -23,7 +23,33 @@
                         </select>
 
                     </div>
+                    <div class=" mb-3">
+                        <select th:field="*{cliente}" id="cliente" class="form-select" aria-label="Select Cliente"
+                                required>
+                            <option selected value="">Cliente</option>
+                            <option th:each="c : ${cliente}" th:text="${c.nombre}"
+                                    th:value="${c.id}"></option>
+                        </select>
 
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="date" th:field="*{fechaPrestamo}" id="fechaPrestamo" class="form-control" required>
+                        <label for="fechaPrestamo">Fecha de Prestamo</label>
+                        <div class="invalid-feedback">Fecha is required</div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="date" th:field="*{fechaDevolucion}" id="fechaDevolucion" class="form-control" required>
+                        <label for="fechaDevolucion">Fecha de Devolucion</label>
+                        <div class="invalid-feedback">Fecha is required</div>
+                    </div>
+
+                    <div class="  mb-3">
+                        <label for="aPrestar" class="form-label">Ejemplares:</label>
+                        <input type="number" max="10" class="form-control" th:field="*{aPrestar}" id="aPrestar"
+                               placeholder="Ingresar Ejemplares" required>
+                        <div class="invalid-feedback text-start">Ejemplares is required</div>
+                    </div>
 
 
                     <button type="submit" class="btn btn-primary"

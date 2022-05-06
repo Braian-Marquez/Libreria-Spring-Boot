@@ -29,12 +29,13 @@
                         <tr th:each="p : ${prestamo}">
                             <td th:text="${p.fechaPrestamo}"></td>
                             <td th:text="${p.fechaDevolucion}"></td>
-                            <td th:text="${p.libro}"></td>
-                            <td th:text="${p.cliente}"></td>
-                            <td><a class="btn btn-warning" th:href="@{/prestamo/form-prestamo/__${p.id}__}">Update</a></td>
+                            <td th:text="${p.libro.nombre}"></td>
+                            <td th:text="${p.cliente.nombre}"></td>
+                            <td th:text="${p.aPrestar}"></td>
+
                             <td>
                                 <form  th:action="@{/prestamo/delete/__${p.id}__}" method="POST">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Devolucion</button>
                                 </form>
                             </td>
                         </tr>

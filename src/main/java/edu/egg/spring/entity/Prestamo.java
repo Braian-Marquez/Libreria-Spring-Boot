@@ -40,8 +40,11 @@ public class Prestamo {
     @JoinColumn(name = "cliente_cliente_id")
     private Cliente cliente;
 
+    private Integer aPrestar;
+
     @Column(name = "prestamo_deleted", nullable = false)
     private boolean deleted = Boolean.FALSE;
 
 
-}
+
+    }

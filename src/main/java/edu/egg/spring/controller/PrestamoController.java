@@ -28,7 +28,7 @@ public class PrestamoController {
 
     @GetMapping
     public ModelAndView getPrestamo(HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("table");
+        ModelAndView mav = new ModelAndView("table-prestamo");
         Map<String, ?> inputFlashMap = RequestContextUtils.getInputFlashMap(request);
 
         if (inputFlashMap != null) mav.addObject("success", inputFlashMap.get("success"));

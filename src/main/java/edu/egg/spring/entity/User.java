@@ -8,6 +8,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -29,6 +30,10 @@ public class User {
 
     @Column(name = "user_password", nullable = false)
     private String password;
+
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
+    private Role role;
 
     @Column(name = "user_deleted", nullable = false)
     private boolean deleted = Boolean.FALSE;;
